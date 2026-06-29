@@ -1,0 +1,149 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-wood: var(--wood);
+  --color-sand: var(--sand);
+  --color-cream: var(--cream);
+  --color-ocean: var(--ocean);
+  --color-sunset: var(--sunset);
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.875rem;
+
+  /* Brand palette (oklch equivalents of the spec) */
+  --wood: oklch(0.48 0.07 55);       /* #8B5E3C */
+  --sand: oklch(0.83 0.05 75);       /* #D9C2A3 */
+  --cream: oklch(0.96 0.02 85);      /* #F6F1E8 */
+  --ocean: oklch(0.32 0.04 240);     /* #223544 */
+  --sunset: oklch(0.76 0.12 55);     /* #E7A46D */
+
+  /* Semantic — light mode (warm, bright, beachy) */
+  --background: oklch(0.97 0.02 85);             /* warm cream */
+  --foreground: oklch(0.25 0.03 240);            /* deep ocean ink */
+  --card: oklch(1 0.005 85);
+  --card-foreground: var(--foreground);
+  --popover: var(--card);
+  --popover-foreground: var(--foreground);
+  --primary: var(--wood);
+  --primary-foreground: oklch(0.98 0.01 85);
+  --secondary: oklch(0.92 0.03 80);
+  --secondary-foreground: var(--ocean);
+  --muted: oklch(0.93 0.02 80);
+  --muted-foreground: oklch(0.45 0.03 250);
+  --accent: var(--sunset);
+  --accent-foreground: oklch(0.18 0.02 240);
+  --destructive: oklch(0.58 0.22 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.88 0.02 75);
+  --input: oklch(0.9 0.02 75);
+  --ring: var(--sunset);
+}
+
+.dark {
+  --background: oklch(0.19 0.025 240);     /* deep cinematic ocean */
+  --foreground: oklch(0.95 0.02 80);
+  --card: oklch(0.23 0.03 240);
+  --card-foreground: var(--foreground);
+  --popover: var(--card);
+  --popover-foreground: var(--foreground);
+  --primary: var(--sunset);
+  --primary-foreground: oklch(0.18 0.02 240);
+  --secondary: oklch(0.28 0.03 240);
+  --secondary-foreground: var(--foreground);
+  --muted: oklch(0.27 0.025 240);
+  --muted-foreground: oklch(0.75 0.03 80);
+  --accent: var(--wood);
+  --accent-foreground: oklch(0.97 0.02 85);
+  --destructive: oklch(0.65 0.2 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 14%);
+  --ring: var(--sunset);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+
+  ::selection {
+    background: var(--sunset);
+    color: var(--ocean);
+  }
+}
+
+@layer utilities {
+  .glass {
+    background: color-mix(in oklab, var(--background) 60%, transparent);
+    backdrop-filter: saturate(140%) blur(14px);
+    -webkit-backdrop-filter: saturate(140%) blur(14px);
+  }
+  .text-balance { text-wrap: balance; }
+  .text-pretty { text-wrap: pretty; }
+
+  .grain::before {
+    content: "";
+    position: absolute; inset: 0;
+    background-image: radial-gradient(rgba(0,0,0,0.04) 1px, transparent 1px);
+    background-size: 3px 3px;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+    opacity: 0.4;
+  }
+}
+
+@keyframes float-soft {
+  0%, 100% { transform: translateY(0) }
+  50% { transform: translateY(-10px) }
+}
+.animate-float-soft { animation: float-soft 7s ease-in-out infinite; }
