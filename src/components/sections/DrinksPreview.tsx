@@ -1,4 +1,3 @@
-import { Link } from "@tanstack/react-router";
 import { Reveal, SectionTitle } from "../Reveal";
 import mojito from "@/assets/gallery-mojito.jpg";
 import spritz from "@/assets/drink-spritz.jpg";
@@ -39,9 +38,9 @@ export function DrinksPreview() {
 
         <Reveal>
           <div className="mt-12 text-center">
-            <Link to="/carte" className="inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background transition hover:scale-[1.02]">
+            <a href="/carte" className="inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background transition hover:scale-[1.02]">
               Voir la carte complète →
-            </Link>
+            </a>
           </div>
         </Reveal>
       </div>

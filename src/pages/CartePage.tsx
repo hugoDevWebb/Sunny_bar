@@ -1,43 +1,34 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Reveal } from "@/components/Reveal";
 import { drinks, type Drink } from "@/lib/data";
 
-export const Route = createFileRoute("/carte")({
-  head: () => ({
-    meta: [
-      { title: "Carte des boissons — Sunny Bar Courseulles-sur-Mer" },
-      { name: "description", content: "Cocktails, mocktails, spritz, bières artisanales, vins et softs : la carte complète du Sunny Bar à Courseulles-sur-Mer." },
-      { property: "og:title", content: "Carte des boissons — Sunny Bar" },
-      { property: "og:description", content: "Cocktails, spritz, bières et vins du Sunny Bar à Courseulles-sur-Mer." },
-      { rel: "canonical", content: "/carte" },
-    ],
-  }),
-  component: CartePage,
-});
-
 const categories: Drink["category"][] = ["Cocktails", "Spritz", "Mocktails", "Bières", "Vins", "Softs"];
 
-function CartePage() {
+export function CartePage() {
   return (
     <>
       <Navbar />
       <main className="pb-24 pt-36">
         <header className="mx-auto max-w-4xl px-6 text-center md:px-8">
           <motion.span
-            initial={{ y: 12, opacity: 0 }} animate={{ y: 0, opacity: 1 }}
+            initial={{ y: 12, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
             className="text-xs uppercase tracking-[0.3em] text-primary"
-          >La carte</motion.span>
+          >
+            La carte
+          </motion.span>
           <motion.h1
-            initial={{ y: 18, opacity: 0 }} animate={{ y: 0, opacity: 1, transition: { delay: 0.1 } }}
+            initial={{ y: 18, opacity: 0 }}
+            animate={{ y: 0, opacity: 1, transition: { delay: 0.1 } }}
             className="mt-3 font-display text-5xl tracking-tight md:text-7xl"
           >
             Carte des boissons
           </motion.h1>
           <motion.p
-            initial={{ y: 18, opacity: 0 }} animate={{ y: 0, opacity: 1, transition: { delay: 0.2 } }}
+            initial={{ y: 18, opacity: 0 }}
+            animate={{ y: 0, opacity: 1, transition: { delay: 0.2 } }}
             className="mx-auto mt-5 max-w-xl text-balance text-muted-foreground"
           >
             Une sélection courte et soignée, à savourer face à la mer.
@@ -52,7 +43,9 @@ function CartePage() {
                 <Reveal>
                   <div className="flex items-end justify-between border-b border-border/60 pb-3">
                     <h2 className="font-display text-3xl md:text-4xl">{cat}</h2>
-                    <span className="text-xs uppercase tracking-[0.25em] text-muted-foreground">{list.length} références</span>
+                    <span className="text-xs uppercase tracking-[0.25em] text-muted-foreground">
+                      {list.length} références
+                    </span>
                   </div>
                 </Reveal>
                 <ul className="mt-6 grid gap-x-10 gap-y-2 md:grid-cols-2">
