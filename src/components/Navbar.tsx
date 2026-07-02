@@ -38,41 +38,43 @@ export function Navbar() {
   
 
   return (
-    <motion.header
-      initial={{ y: -20, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-        scrolled ? "glass border-b border-border/60 py-2" : "bg-transparent py-4"
-      }`}
-    >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 md:px-8">
-        <Logo />
+    <>
+      <motion.header
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
+          scrolled ? "glass border-b border-border/60 py-2" : "bg-transparent py-4"
+        }`}
+      >
+        <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 md:px-8">
+          <Logo />
 
-        <ul className="hidden items-center gap-7 lg:flex">
-          {links.map((l) => (
-            <li key={l.href}>
-              <a
-                href={l.href}
-                className="relative text-sm text-foreground/80 transition-colors hover:text-foreground"
-              >
-                {l.label}
-                <span className="absolute -bottom-1 left-0 h-px w-0 bg-primary transition-all duration-300 hover:w-full" />
-              </a>
-            </li>
-          ))}
-        </ul>
+          <ul className="hidden items-center gap-7 lg:flex">
+            {links.map((l) => (
+              <li key={l.href}>
+                <a
+                  href={l.href}
+                  className="relative text-sm text-foreground/80 transition-colors hover:text-foreground"
+                >
+                  {l.label}
+                  <span className="absolute -bottom-1 left-0 h-px w-0 bg-primary transition-all duration-300 hover:w-full" />
+                </a>
+              </li>
+            ))}
+          </ul>
 
-        <div className="flex items-center gap-2">
-          <button
-            onClick={() => setOpen(true)}
-            className="rounded-full border border-border/70 p-2 lg:hidden"
-            aria-label="Ouvrir le menu"
-          >
-            <Menu size={18} />
-          </button>
-        </div>
-      </nav>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setOpen(true)}
+              className="rounded-full border border-border/70 p-2 lg:hidden"
+              aria-label="Ouvrir le menu"
+            >
+              <Menu size={18} />
+            </button>
+          </div>
+        </nav>
+      </motion.header>
 
       <AnimatePresence>
         {open && (
@@ -80,7 +82,7 @@ export function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[60] bg-background/95 backdrop-blur-xl lg:hidden"
+            className="fixed inset-0 z-[60] bg-background lg:hidden"
           >
             <div className="flex items-center justify-between px-5 py-5">
               <Logo />
@@ -108,6 +110,6 @@ export function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.header>
+    </>
   );
 }
