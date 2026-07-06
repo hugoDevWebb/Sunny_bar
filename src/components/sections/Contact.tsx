@@ -34,7 +34,7 @@ export function Contact() {
               @le_sunny_courseulles
             </a>
             <a
-              href="https://www.facebook.com/people/Le-Sunny-Bar-Courseulles-sur-mer/"
+              href="https://www.facebook.com/p/Le-Sunny-Bar-Courseulles-sur-mer-100094926032765/?locale=fr_FR"
               target="_blank" rel="noreferrer"
               className="group inline-flex items-center gap-3 rounded-full border border-border bg-card px-6 py-3 text-sm font-medium transition hover:scale-[1.03]"
             >

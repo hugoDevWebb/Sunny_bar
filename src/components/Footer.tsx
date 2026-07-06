@@ -31,7 +31,7 @@ export function Footer() {
               <Instagram size={16} />
             </a>
             <a
-              href="https://www.facebook.com/people/Le-Sunny-Bar-Courseulles-sur-mer/"
+              href="https://www.facebook.com/p/Le-Sunny-Bar-Courseulles-sur-mer-100094926032765/?locale=fr_FR"
               target="_blank" rel="noreferrer"
               className="rounded-full border border-border p-2 transition hover:bg-accent/20"
               aria-label="Facebook"
